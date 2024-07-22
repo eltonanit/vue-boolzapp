@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="sidebar">
+                <div class="header">
+                    <img src="img/do ctor.jpg" alt="Sofia" class="avatar">
+                    <span>Sofia</span>
+                    <div class="header-icons">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="notifications">
+                    <i class="fas fa-bell-slash"></i>
+                    <div>
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input v-model="searchQuery" type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div class="contacts">
+                    <div v-for="(contact, index) in filteredContacts" :key="contact.name"
+                        @click="setActiveContact(index)" class="contact">
+                        <img :src="contact.avatar" :alt="contact.name" class="avatar">
+                        <div class="contact-info">
+                            <h3>{{ contact.name }}</h3>
+                            <p>{{ getLastMessage(contact) }}</p>
+                        </div>
+                        <span class="time">{{ getLastMessageTime(contact) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat">
+                <div class="chat-header">
+                    <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name" class="avatar">
+                    <div>
+                        <h3>{{ contacts[activeContact].name }}</h3>
+                        <p>Ultimo accesso oggi alle {{ getLastMessageTime(contacts[activeContact]) }}</p>
+                    </div>
+                    <div class="chat-header-icons">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div v-for="message in contacts[activeContact].messages" :key="message.date"
+                        :class="['message', message.status]">
+                        <p>{{ message.message }}</p>
+                        <span class="time">{{ message.date.split(' ')[1] }}</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <i class="far fa-smile"></i>
+                    <input v-model="newMessage" @keyup.enter="sendMessage" type="text"
+                        placeholder="Scrivi un messaggio">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
