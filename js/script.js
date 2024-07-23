@@ -165,3 +165,18 @@ createApp({
                         }
                     ],
                 }
+            ],
+            activeContact: 0,
+            newMessage: '',
+            searchQuery: ''
+        }
+    },
+    computed: {
+        filteredContacts() {
+            return this.contacts.filter(contact =>
+                contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+        }
+    },
+    
+}).mount('#app');
