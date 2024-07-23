@@ -178,5 +178,38 @@ createApp({
             );
         }
     },
-    
+    methods: {
+        setActiveContact(index) {
+            this.activeContact = index;
+        },
+        sendMessage() {
+            if (this.newMessage.trim() === '') return;
+
+            const message = {
+                date: new Date().toLocaleString('it-IT'),
+                message: this.newMessage,
+                status: 'sent'
+            };
+
+            this.contacts[this.activeContact].messages.push(message);
+            this.newMessage = '';
+
+            setTimeout(() => {
+                const reply = {
+                    date: new Date().toLocaleString('it-IT'),
+                    message: 'Ok',
+                    status: 'received'
+                };
+                this.contacts[this.activeContact].messages.push(reply);
+            }, 1000);
+        },
+        getLastMessage(contact) {
+            const lastMessage = contact.messages[contact.messages.length - 1];
+            return lastMessage ? lastMessage.message : 'Nessun messaggio';
+        },
+        getLastMessageTime(contact) {
+            const lastMessage = contact.messages[contact.messages.length - 1];
+            return lastMessage ? lastMessage.date.split(' ')[1] : '';
+        }
+    }
 }).mount('#app');
