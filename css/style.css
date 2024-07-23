@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: rgb(215, 215, 210);
+    background: #d6d7d2;
     background: linear-gradient(0deg, rgba(215, 215, 210, 1) 82%, rgba(0, 148, 133, 1) 83%);
      margin: 0;
     padding: 20px 0;
@@ -20,7 +20,7 @@ body {
     display: flex;
     width: 100vv;
     height: 95vh;
-    background-color: #cbcbcb;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -39,7 +39,7 @@ body {
 }
 .header,
 .chat-header {
-    background-color:#D7D7D2;
+    background-color: #e6e6e6;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@ body {
 }
 
 .notifications {
-    background-color: #7ecbee;
+    background-color: #8dd7fa;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -135,12 +135,11 @@ body {
 
 .chat-messages {
     flex-grow: 1;
-    background: url('img/mine.jpg');
+    background: url('img/mine.jpg') no-repeat center center;
     background-size: cover;
     padding: 20px;
     overflow-y: auto;
 }
-
 .message {
     max-width: 60%;
     padding: 10px;
