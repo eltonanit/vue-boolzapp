@@ -40,8 +40,9 @@
                     <input v-model="searchQuery" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div class="contacts">
+                    
                     <div v-for="(contact, index) in filteredContacts" :key="contact.name"
-                        @click="setActiveContact(index)" class="contact">
+                        @click="setActiveContact(index)" class="contact index == activeContact ? 'active' : ''">
                         <img :src="contact.avatar" :alt="contact.name" class="avatar">
                         <div class="contact-info">
                             <h3>{{ contact.name }}</h3>

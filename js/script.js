@@ -3,8 +3,12 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            contacts: [
-                {
+
+           
+
+
+
+            contacts: [{
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
                     visible: true,
@@ -210,6 +214,9 @@ createApp({
         getLastMessageTime(contact) {
             const lastMessage = contact.messages[contact.messages.length - 1];
             return lastMessage ? lastMessage.date.split(' ')[1] : '';
+        },  
+        setcontactActive(index) {
+            this.activeContact = index;
         }
     }
 }).mount('#app');
