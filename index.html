@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzapp</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <title>Boolzapp -Esercizio </title>
 </head>
 
 <body>
@@ -20,7 +24,7 @@
                 <div class="header">
                     <img src="img/ava1.jpg" alt="Elton" class="avatar">
                     <span>Elton</span>
-                    
+
                     <div class="header-icons">
                         <i class="fas fa-circle-notch"></i>
                         <i class="fas fa-comment-alt"></i>
@@ -40,7 +44,7 @@
                     <input v-model="searchQuery" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div class="contacts">
-                    
+
                     <div v-for="(contact, index) in filteredContacts" :key="contact.name"
                         @click="setActiveContact(index)" class="contact index == activeContact ? 'active' : ''">
                         <img :src="contact.avatar" :alt="contact.name" class="avatar">
@@ -81,6 +85,7 @@
             </div>
         </div>
     </div>
+   
     <script src="js/script.js"></script>
 </body>
 
