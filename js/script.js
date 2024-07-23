@@ -201,7 +201,7 @@ createApp({
             setTimeout(() => {
                 const reply = {
                     date: new Date().toLocaleString('it-IT'),
-                    message: 'Ok',
+                    message: 'Ok ti faccio sapere',
                     status: 'received'
                 };
                 this.contacts[this.activeContact].messages.push(reply);
