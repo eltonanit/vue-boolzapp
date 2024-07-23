@@ -6,7 +6,7 @@ createApp({
             contacts: [
                 {
                     name: 'Michele',
-                    avatar: './img/avatar_1.png',
+                    avatar: './img/avatar_1.jpg',
                     visible: true,
                     messages: [
                         {
@@ -28,7 +28,7 @@ createApp({
                 },
                 {
                     name: 'Fabio',
-                    avatar: './img/avatar_2.png',
+                    avatar: './img/avatar_2.jpg',
                     visible: true,
                     messages: [
                         {
@@ -50,7 +50,7 @@ createApp({
                 },
                 {
                     name: 'Samuele',
-                    avatar: './img/avatar_3.png',
+                    avatar: './img/avatar_3.jpg',
                     visible: true,
                     messages: [
                         {
@@ -72,7 +72,7 @@ createApp({
                 },
                 {
                     name: 'Alessandro B.',
-                    avatar: './img/avatar_4.png',
+                    avatar: './img/avatar_4.jpg',
                     visible: true,
                     messages: [
                         {
@@ -89,7 +89,7 @@ createApp({
                 },
                 {
                     name: 'Alessandro L.',
-                    avatar: './img/avatar_5.png',
+                    avatar: './img/avatar_5.jpg',
                     visible: true,
                     messages: [
                         {
@@ -106,7 +106,7 @@ createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: './img/avatar_6.png',
+                    avatar: './img/avatar_6.jpg',
                     visible: true,
                     messages: [
                         {
@@ -128,7 +128,7 @@ createApp({
                 },
                 {
                     name: 'Federico',
-                    avatar: './img/avatar_7.png',
+                    avatar: './img/avatar_7.jpg',
                     visible: true,
                     messages: [
                         {
@@ -145,7 +145,7 @@ createApp({
                 },
                 {
                     name: 'Davide',
-                    avatar: './img/avatar_8.png',
+                    avatar: './img/avatar_8.jpg',
                     visible: true,
                     messages: [
                         {
@@ -166,3 +166,50 @@ createApp({
                     ],
                 }
             ],
+            activeContact: 0,
+            newMessage: '',
+            searchQuery: ''
+        }
+    },
+    computed: {
+        filteredContacts() {
+            return this.contacts.filter(contact =>
+                contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+        }
+    },
+    methods: {
+        setActiveContact(index) {
+            this.activeContact = index;
+        },
+        sendMessage() {
+            if (this.newMessage.trim() === '') return;
+
+            const message = {
+                date: new Date().toLocaleString('it-IT'),
+                message: this.newMessage,
+                status: 'sent'
+            };
+
+            this.contacts[this.activeContact].messages.push(message);
+            this.newMessage = '';
+
+            setTimeout(() => {
+                const reply = {
+                    date: new Date().toLocaleString('it-IT'),
+                    message: 'Ok',
+                    status: 'received'
+                };
+                this.contacts[this.activeContact].messages.push(reply);
+            }, 1000);
+        },
+        getLastMessage(contact) {
+            const lastMessage = contact.messages[contact.messages.length - 1];
+            return lastMessage ? lastMessage.message : 'Nessun messaggio';
+        },
+        getLastMessageTime(contact) {
+            const lastMessage = contact.messages[contact.messages.length - 1];
+            return lastMessage ? lastMessage.date.split(' ')[1] : '';
+        }
+    }
+}).mount('#app');
