@@ -142,7 +142,7 @@ body {
 
 .chat-messages {
     flex-grow: 1;
-    background: url('img/mine.jpg') no-repeat center center;
+background: url('../img/mine.jpg') no-repeat center center;
     background-size: cover;
     padding: 20px;
     overflow-y: auto;
@@ -162,7 +162,7 @@ body {
 }
 
 .message.received {
-    background-color: #dfdbd0;
+    background-color: #ffffff;
 }
 
 .chat-input {
